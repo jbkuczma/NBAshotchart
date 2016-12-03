@@ -1,0 +1,12 @@
+Starting virtual environment:
+	source venv/bin/activate
+
+Ending virtual environment:
+	deactivate
+
+Before first run:
+	export FLASK_DEBUG=1 
+	export FLASK_APP=MAIN_APP_FILE.py
+	
+Running Flask app:
+	flask run
