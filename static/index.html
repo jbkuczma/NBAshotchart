@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title> NBAshotchart </title>
-	<link rel="stylesheet" href="static/main.css" />
-	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="utf-8">
-</head>
-<body>
-	<h1> 
-		hey there
-	</h1>
-</body>
+	<head>
+		<title> NBAshotchart </title>
+		<link rel="stylesheet" href="static/main.css" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+	    <meta charset="utf-8" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1> 
+			hey there
+		</h1>
+		<table>
+			{% for player in roster %}
+			   <tr>
+			        <th> {{ player[3] }} </th>
+			        <td> {{ player[5] }} </td>
+			   </tr>
+			{% endfor %}
+		</table>
+	</body>
 </html>
