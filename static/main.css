@@ -1,7 +1,45 @@
-html {
+html, body {
 	font-family: 'Roboto', sans-serif;
 }
 
-.playerHeaderInfo {
+.center {
 	text-align: center;
 }
+.playerHeaderInfo {
+	
+}
+.teamList {
+	width: 100%;
+	min-height: 100%;
+	margin-top: 40px;
+}
+.mainBody {
+	background: #141E30; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #141E30 , #243B55); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #141E30 , #243B55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.head {
+	color: #FEFEFE;
+}
+.teamList ul {
+	overflow: auto;
+	height: auto;
+    list-style-type: none;
+    min-height: 100%;
+}
+.teamList li {
+	width: 50%;
+  	float: left;
+  	height: 40px;
+  	text-align: center;
+}
+.teamList a {
+	color: #FEFEFE;
+	text-decoration: none;
+}
+.teamList li:hover {
+	opacity: 0.8;
+	color: #130317;
+	background-color: #8E9EAB;
+}
+
