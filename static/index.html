@@ -10,15 +10,16 @@
 	</head>
 	<body>
 		<h1> 
-			hey there
+			{{ team }}
 		</h1>
 		<table>
 			{% for player in roster %}
-			   <tr>
+			   <tr onClick="goToPlayerPage( {{player}} )">
 			        <th> {{ player[3] }} </th>
 			        <td> {{ player[5] }} </td>
 			   </tr>
 			{% endfor %}
 		</table>
+	<script type="text/javascript" src="static/main.js"></script>
 	</body>
 </html>
