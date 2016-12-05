@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> NBAshotchart </title>
+		<link rel="stylesheet" href="../static/main.css" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+	    <meta charset="utf-8" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<h1> 
+			{{ team }}
+		</h1>
+		<table>
+			{% for player in roster %}
+			   <tr onClick="goToPlayerPage( {{player}} )">
+			        <th> {{ player[3] }} </th>
+			        <td> {{ player[5] }} </td>
+			   </tr>
+			{% endfor %}
+		</table>
+		<script type="text/javascript" src="../static/main.js"></script>
+	</body>
+</html>
