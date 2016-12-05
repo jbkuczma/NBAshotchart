@@ -4,9 +4,9 @@ from random import randint
 
 class NBA():
 
-	def __init__(self):
+	def __init__(self, teamID):
 		self.teamList = self.getTeams()
-		self.team = self.getRandomTeam()
+		self.team = teamID or self.getRandomTeam()
 		self.season = "2016-17" # has to be manually changed for every season
 
 	def makeRequest(self, url):

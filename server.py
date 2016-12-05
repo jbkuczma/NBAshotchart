@@ -12,17 +12,17 @@ app = Flask(
 
 @app.route('/')
 def main():
-	nba = NBA()
-	team = nba.getTeam()
-	roster = nba.getRoster()
-	# return current_app.send_static_file('index.html', result=result)
-	return render_template('index.html', roster=roster, team=team)
+	return render_template('index.html')
 
 @app.route('/team/<teamID>')
 def team(teamID):
-	return teamID
+	nba = NBA(teamID=teamID)
+	# team = nba.getTeam()
+	roster = nba.getRoster()
+	# return current_app.send_static_file('index.html', result=result)
+	return render_template('team.html', roster=roster, team=nba.team)
 
 # where the actual shot chart will be
 @app.route('/player/<playerID>')
 def player(playerID):
-	return playerID
+	return render_template('player.html', playerID=playerID)
