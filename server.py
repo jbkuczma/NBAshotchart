@@ -1,9 +1,10 @@
 from flask import Flask, current_app, render_template
 import os
 from nba import NBA, Player
+from grapher import Grapher
 
 # setting where to look at html template
-templateDirectory = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+templateDirectory = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'template')
 
 app = Flask(
 		__name__, 
@@ -25,8 +26,19 @@ def team(teamID):
 # where the actual shot chart will be
 @app.route('/player/<playerID>')
 def player(playerID):
-	# render the shot chart on server and display 
+
 	player = Player(playerID)
 	shotChart = player.getShotData()
-	# we have the data
-	return render_template('player.html', playerID=playerID, shotChart=shotChart)
+	headers = shotChart['resultSets'][0]['headers']
+	shots = shotChart['resultSets'][0]['rowSet']
+
+	grapher = Grapher(shots)
+	x,y = grapher.getShotCoordinates()
+	file = grapher.makeGraph(x,y)
+
+	return render_template('player.html', playerID=playerID, shotChart=file)
+
+@app.after_request
+def addHeader(response):
+    response.headers['Cache-Control'] = 'public, max-age=0'
+    return response
