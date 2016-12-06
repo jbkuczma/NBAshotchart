@@ -38,3 +38,15 @@ class NBA():
 		url = 'http://stats.nba.com/stats/commonteamroster?LeagueID=00&Season={}&TeamID={}'.format(self.season, self.team)
 		data = self.makeRequest(url)
 		return data["resultSets"][0]["rowSet"]
+
+class Player():
+
+	def __init__(self, playerID):
+		self.playerID = playerID
+		self.season = '2016-17'
+
+	def getShotData(self):
+		url = "http://stats.nba.com/stats/shotchartdetail?Period=0&VsConference=&LeagueID=00&LastNGames=0&TeamID=0&Position=&Location=&Outcome=&ContextMeasure=FGA&DateFrom=&StartPeriod=&DateTo=&OpponentTeamID=0&ContextFilter=&RangeType=&Season={}&AheadBehind=&PlayerID={}&EndRange=&VsDivision=&PointDiff=&RookieYear=&GameSegment=&Month=0&ClutchTime=&StartRange=&EndPeriod=&SeasonType=Regular+Season&SeasonSegment=&GameID=&PlayerPosition=".format(self.season, self.playerID)
+		nba = NBA(0)
+		data = nba.makeRequest(url)
+		return data
