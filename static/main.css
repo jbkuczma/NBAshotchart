@@ -1,5 +1,10 @@
-html, body {
+html, body, h1, h2, h3, h4, h5 {
 	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+html, body {
+	width: 100%;
 }
 
 .center {
@@ -41,5 +46,12 @@ html, body {
 	opacity: 0.8;
 	color: #130317;
 	background-color: #8E9EAB;
+}
+
+#teamTable {
+	margin: 0 auto;
+}
+#teamTableRow {
+	height: 35px;
 }
 

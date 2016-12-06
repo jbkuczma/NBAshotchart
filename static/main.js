@@ -12,8 +12,12 @@ function setProperties(url){
 
 	document.getElementById('playerName').innerHTML = playerData[3];
 	document.getElementById('playerNumPos').innerHTML = '#' + playerData[4] + ' | ' + playerData[5];
+	document.getElementById('playerTitle').innerHTML = playerData[3];
 }
 
+function goBackToPlayerPage(){
+
+}
 function addTeams(){
 	const teamList = [
 		['Atlanta Hawks','1610612737'],
