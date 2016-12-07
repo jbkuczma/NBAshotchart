@@ -1,30 +1,83 @@
+* {
+	margin: 0;
+}
 html, body, h1, h2, h3, h4, h5 {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
+	color: #393939;
 }
 
 html, body {
 	width: 100%;
+	padding: 0;
+  	margin: 0;
 }
 
 .center {
 	text-align: center;
 }
+.button {
+	min-width: 150px;
+	max-width: 250px;
+	margin: 1em;
+	padding: 1em 2em;
+	border: none;
+	background: none;
+	color: inherit;
+	vertical-align: middle;
+	position: relative;
+	z-index: 1;
+	-webkit-backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+
+	/* for hover effect */
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: color, background-color;
+	transition-property: color, background-color;
+}
+.button-thin {
+	border: 1px solid;
+}
+.button:hover {
+	background-color: #212121;
+	color: #FEFEFE;
+	cursor: pointer
+}
 .playerHeaderInfo {
 	
 }
+/*.head {
+	color: #FEFEFE !important;
+}*/
 .teamList {
 	width: 100%;
 	min-height: 100%;
 	margin-top: 40px;
 }
+
 .mainBody {
-	background: #141E30; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to left, #141E30 , #243B55); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to left, #141E30 , #243B55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background-color: #FAFAFA;
+	/*background: #141E30; /* fallback for old browsers */
+	/*background: -webkit-linear-gradient(to left, #141E30 , #243B55); /* Chrome 10-25, Safari 5.1-6 */
+	/*background: linear-gradient(to left, #141E30 , #243B55); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .head {
-	color: #FEFEFE;
+	background-color: #fac8b4;
+	padding-top: 20px;
+	height: 100px;
+}
+.head h1, 
+.head h4 {
+	/*color: #FEFEFE;*/
+	color: #393939;
+}
+
+#teamContentHead {
+	margin-top: 15px;
+}
+#playerBody {
+	margin-top: 15px;
 }
 .teamList ul {
 	overflow: auto;
@@ -39,13 +92,16 @@ html, body {
   	text-align: center;
 }
 .teamList a {
-	color: #FEFEFE;
+	/*color: #FEFEFE;*/
+	color: #393939;
 	text-decoration: none;
 }
 .teamList li:hover {
 	opacity: 0.8;
-	color: #130317;
-	background-color: #8E9EAB;
+	/*color: #130317;*/
+	color: #393939;
+	background-color: rgba(142,158,171,0.2);
+	/*background-color: #8E9EAB;*/
 }
 
 #teamTable {
@@ -53,6 +109,10 @@ html, body {
 }
 #teamTableRow {
 	height: 35px;
+	cursor: pointer
+}
+#teamTableRow:hover {
+	opacity: 0.8;
 }
 
 .shotChartArea > img {

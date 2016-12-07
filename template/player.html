@@ -7,11 +7,11 @@
 	    <meta charset="utf-8" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
-	<body onLoad="setProperties(document.URL)">
+	<body onLoad="setProperties(document.URL)" id="playerBody">
 		<div class="playerHeaderInfo center">
 			<h1 id="playerName"> </h1>
 			<h2 id="playerNumPos"> </h2>
-			<button id="playerButton" onClick="window.history.go(-1)"> Back to Team </button>
+			<button class="button button-thin"id="playerButton" onClick="window.history.go(-1)"> Back to Team </button>
 		</div>
 		<div class="shotChartArea">
 			<!-- {{ shotChart }} -->

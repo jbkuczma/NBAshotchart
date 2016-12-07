@@ -12,6 +12,7 @@
 			<h1 id="teamContentHead"> 
 				{{ teamName }}
 			</h1>
+			<button class="button button-thin" onClick="window.history.go(-1)"> Back </button>
 			<table id="teamTable">
 				{% for player in roster %}
 				   <tr id="teamTableRow" onClick="goToPlayerPage( {{player}} )">
