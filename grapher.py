@@ -51,7 +51,7 @@ class Grapher():
 			ax.add_patch(element)
 		return ax
 
-	def makeGraph(self, xCoordinates, yCoordinates, shotStatus):
+	def makeGraph(self, xCoordinates, yCoordinates, madeX, madeY, missedX, missedY):
 
 		fileName = 'static/temp.png'
 		# cmap=plt.cm.gist_heat_r color=cmap(.2), cmap=cmap
@@ -70,12 +70,17 @@ class Grapher():
 
 		# plot shots over hexagons
 		ax2 = ax.twinx()
-		sns.regplot(np.array(xCoordinates), np.array(yCoordinates), ax=ax2, fit_reg=False)
+		sns.regplot(np.array(madeX), np.array(madeY), ax=ax2, fit_reg=False, color='#5E81BA', scatter_kws={'s':40})
+		sns.regplot(np.array(missedX), np.array(missedY), ax=ax2, fit_reg=False, marker='x', color='red', scatter_kws={'s':80})
+		# sns.regplot(np.array(xCoordinates), np.array(yCoordinates), ax=ax2, fit_reg=False)
 		ax2.set_xlim(-250,250)
 		ax2.set_ylim(422.5, -47.5)
 		ax2.set_xlabel('')
 		ax2.set_ylabel('')
 		ax2.tick_params(labelbottom='off', labelleft='off', labelright='off')
+
+		title = '{} shots made \n {} shots attempted'.format(len(madeX), len(xCoordinates))
+		ax.set_title(title, y=0.15, fontsize=24)
 
 		
 
@@ -105,26 +110,5 @@ class Grapher():
 		# plt.savefig(fileName, facecolor=f.get_facecolor())
 		return fileName
 
-	def randomNumber(self):
-		return randint(0, 1000000)
-
-
-
-
-	'''
-	http://stats.stackexchange.com/questions/798/calculating-optimal-number-of-bins-in-a-histogram
-	http://stackoverflow.com/questions/23228244/how-do-you-find-the-iqr-in-numpy
-
-	def IQR(self, list):
-		return np.subtract(*np.percentile(list, [75, 25]))
-
-	def getBinSize(self, list):
-		return (max(list) - min(list)) / (2 * self.IQR(list) / len(list)**(1/3))
-
-	def getGridSize(self, x, y):
-		xBin = self.getBinSize(x)
-		yBin = self.getBinSize(y)
-		return int(np.mean([xBin, yBin]))
-	'''
 
 		
