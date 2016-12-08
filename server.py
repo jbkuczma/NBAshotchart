@@ -33,8 +33,8 @@ def player(playerID):
 	shots = shotChart['resultSets'][0]['rowSet']
 
 	grapher = Grapher(shots)
-	x,y = grapher.getShotCoordinates()
-	file = grapher.makeGraph(x,y)
+	x,y,shotStatus = grapher.getShotCoordinates()
+	file = grapher.makeGraph(x,y, shotStatus)
 
 	return render_template('player.html', playerID=playerID, shotChart=file)
 

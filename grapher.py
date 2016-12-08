@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
 from matplotlib.patches import Circle, Rectangle, Arc
 from os import path, remove
 from random import randint
@@ -11,19 +13,23 @@ class Grapher():
 	def getShotCoordinates(self):
 		xCoordinates = []
 		yCoordinates = []
+		shotStatus = []
+
 		for shot in self.playerShotData:
+			shotStatus.append(shot[10])
 			xCoordinates.append(shot[17])
 			yCoordinates.append(shot[18])
 
-		return xCoordinates, yCoordinates
+		return xCoordinates, yCoordinates, shotStatus
 
 	'''
-	shoutout to Savvas Tjortjoglou for this awesome tutorial
+	shoutout to Savvas Tjortjoglou for this awesome tutorial on how to draw the court
 	http://savvastjortjoglou.com/nba-shot-sharts.html
 	'''
-	def drawCourt(self, plot, ax=None, color='black', lw=2, outerLines=False):
+	def drawCourt(self, ax=None, color='black', lw=2, outerLines=False):
 		if ax is None:
-			ax = plot.gca()
+			ax = plt.gca()
+			# ax.set_axis_bgcolor('#FAFAFA')
 
 		hoop = Circle((0, 0), radius=7.5, linewidth=lw, color=color, fill=False)
 		backboard = Rectangle((-30, -7.5), 60, -1, linewidth=lw, color=color)
@@ -45,19 +51,80 @@ class Grapher():
 			ax.add_patch(element)
 		return ax
 
-	def makeGraph(self, xCoordinates, yCoordinates):
+	def makeGraph(self, xCoordinates, yCoordinates, shotStatus):
 
 		fileName = 'static/temp.png'
-			
-		plt.figure(figsize=(12,11))
-		plt.xlim(-250,250)
-		plt.ylim(422.5, -47.5)
-		plt.scatter(xCoordinates, yCoordinates)
-		self.drawCourt(plt, outerLines=True)
+		# cmap=plt.cm.gist_heat_r color=cmap(.2), cmap=cmap
+		cmap=plt.cm.Blues
+		sns.set(style='white')
+		s = sns.jointplot(np.array(xCoordinates), np.array(yCoordinates), stat_func=None,  kind='hex', space=0, color="#4CB391")
+
+		s.fig.set_size_inches(12,11)
+		ax = s.ax_joint
+		self.drawCourt(ax, outerLines=True)
+		ax.set_xlim(-250,250)
+		ax.set_ylim(422.5, -47.5)
+		ax.set_xlabel('')
+		ax.set_ylabel('')
+		ax.tick_params(labelbottom='off', labelleft='off', labelright='off')
+
+		# plot shots over hexagons
+		ax2 = ax.twinx()
+		sns.regplot(np.array(xCoordinates), np.array(yCoordinates), ax=ax2, fit_reg=False)
+		ax2.set_xlim(-250,250)
+		ax2.set_ylim(422.5, -47.5)
+		ax2.set_xlabel('')
+		ax2.set_ylabel('')
+		ax2.tick_params(labelbottom='off', labelleft='off', labelright='off')
+
+		
+
+		# plt.figure(figsize=(12,11))
+		# plt.xlim(-250,250)
+		# plt.ylim(422.5, -47.5)
+		# s = sns.jointplot(np.array(xCoordinates), np.array(yCoordinates), stat_func=None, kind='hex', space=0, color=cmap(0.2), cmap=cmap)
+		# s.fig.set_size_inches(12,11)
+		# ax = s.ax_joint
+		# ax.set_xlim(-250,250)
+		# ax.set_ylim(422.5, -47.5)
+		
+		# plt.scatter(xCoordinates, yCoordinates)
+		# need to calculate gridSize
+		# gridSize = self.getGridSize(xCoordinates, yCoordinates) mincnt=1 plt.cm.Blues
+		# gridSize = 25
+		# plt.hexbin(xCoordinates, yCoordinates, mincnt=1, cmap=plt.cm.YlOrRd, gridsize=gridSize)
+		
+		# cb = plt.colorbar()
+		# cb.set_label('Shots taken')
+
+		# plt.scatter(xCoordinates, yCoordinates)
+
+		# self.drawCourt(plt, outerLines=True)
 		plt.savefig(fileName)
+		# plt.savefig(fileName, transparent=True)
+		# plt.savefig(fileName, facecolor=f.get_facecolor())
 		return fileName
 
 	def randomNumber(self):
 		return randint(0, 1000000)
+
+
+
+
+	'''
+	http://stats.stackexchange.com/questions/798/calculating-optimal-number-of-bins-in-a-histogram
+	http://stackoverflow.com/questions/23228244/how-do-you-find-the-iqr-in-numpy
+
+	def IQR(self, list):
+		return np.subtract(*np.percentile(list, [75, 25]))
+
+	def getBinSize(self, list):
+		return (max(list) - min(list)) / (2 * self.IQR(list) / len(list)**(1/3))
+
+	def getGridSize(self, x, y):
+		xBin = self.getBinSize(x)
+		yBin = self.getBinSize(y)
+		return int(np.mean([xBin, yBin]))
+	'''
 
 		

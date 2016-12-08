@@ -1,5 +1,6 @@
 function goToPlayerPage(player){
-	var id = (player[12] === null ? 'None' : player[12]);
+	// can't go to player page if None is found in player array
+	var id = (player[player.length-1] === null ? 'None' : player[player.length-1]);
 	var url = '/player/' + id + '?player='+ player;
 	window.location = url;
 }
