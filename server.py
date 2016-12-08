@@ -20,6 +20,9 @@ def team(teamID):
 	nba = NBA(teamID=teamID)
 	# team = nba.getTeam()
 	roster = nba.getRoster()
+	for player in roster:
+		if player[11] == None:
+			player[11] = 'None'
 	# return current_app.send_static_file('index.html', result=result)
 	return render_template('team.html', roster=roster, team=nba.team, teamName=nba.getTeam())
 
@@ -34,7 +37,21 @@ def player(playerID):
 
 	grapher = Grapher(shots)
 	x,y,shotStatus = grapher.getShotCoordinates()
-	file = grapher.makeGraph(x,y, shotStatus)
+
+	# split shot coordinates into made and miss
+	madeX = []
+	madeY = []
+	missedX = []
+	missedY = []
+	for i in range(len(x)):
+		if shotStatus[i] == 'Made Shot':
+			madeX.append(x[i])
+			madeY.append(y[i])
+		else:
+			missedX.append(x[i])
+			missedY.append(y[i])
+
+	file = grapher.makeGraph(x,y, madeX, madeY, missedX, missedY)
 
 	return render_template('player.html', playerID=playerID, shotChart=file)
 
