@@ -80,7 +80,9 @@ class Grapher():
 		ax2.tick_params(labelbottom='off', labelleft='off', labelright='off')
 
 		title = '{} shots made \n {} shots attempted'.format(len(madeX), len(xCoordinates))
-		ax.set_title(title, y=0.15, fontsize=24)
+		# ax.set_title(title, y=0.15, fontsize=24)
+		# ax.set_title(title, y=1.13, x=0.16, fontsize=24)
+		ax.set_title(title, y=0.01, x=0.81, fontsize=24)
 
 		
 
@@ -105,7 +107,7 @@ class Grapher():
 		# plt.scatter(xCoordinates, yCoordinates)
 
 		# self.drawCourt(plt, outerLines=True)
-		plt.savefig(fileName)
+		plt.savefig(fileName, transparent=True)
 		# plt.savefig(fileName, transparent=True)
 		# plt.savefig(fileName, facecolor=f.get_facecolor())
 		return fileName

@@ -1,5 +1,4 @@
 function goToPlayerPage(player){
-	// can't go to player page if None is found in player array
 	var id = (player[player.length-1] === null ? 'None' : player[player.length-1]);
 	var url = '/player/' + id + '?player='+ player;
 	window.location = url;
@@ -58,9 +57,8 @@ function addTeams(){
   		link.setAttribute('href', 'team/'+teamList[i][1]);
   		link.innerHTML = teamList[i][0];
   		var li = document.createElement("li");
-  		//document.createTextNode(teamList[i])
   		li.appendChild(link);
-  		ul.appendChild(li)
+  		ul.appendChild(li);
   	}
   	
 }

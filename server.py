@@ -35,6 +35,9 @@ def player(playerID):
 	headers = shotChart['resultSets'][0]['headers']
 	shots = shotChart['resultSets'][0]['rowSet']
 
+	# print(shots)
+	# print('---')
+
 	grapher = Grapher(shots)
 	x,y,shotStatus = grapher.getShotCoordinates()
 
