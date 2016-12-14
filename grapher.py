@@ -53,7 +53,7 @@ class Grapher():
 
 	def makeGraph(self, xCoordinates, yCoordinates, madeX, madeY, missedX, missedY):
 
-		fileName = 'static/jimmybutler.png'
+		fileName = 'static/temp.png'
 		# cmap=plt.cm.gist_heat_r color=cmap(.2), cmap=cmap
 		cmap=plt.cm.Blues
 		sns.set(style='white')
