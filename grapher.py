@@ -82,7 +82,8 @@ class Grapher():
 		title = '{} shots made \n {} shots attempted'.format(len(madeX), len(xCoordinates))
 		# ax.set_title(title, y=0.15, fontsize=24)
 		# ax.set_title(title, y=1.13, x=0.16, fontsize=24)
-		ax.set_title(title, y=0.01, x=0.81, fontsize=24)
+		# ax.set_title(title, y=0.01, x=0.81, fontsize=24)
+		ax.set_title(title, y=-0.08, x=0.5, fontsize=20)
 
 		
 
