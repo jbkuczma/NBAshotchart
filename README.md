@@ -1,6 +1,6 @@
 # NBAshotchart
 
-Visualizing shots taken by NBA players aka a shot chart.
+Visualizing shots taken by NBA players for the 2016-2017 season.
 
 # Getting Started
 
@@ -16,8 +16,12 @@ Either visit the website here (coming soon) or clone this repo.
     
     flask run
 
+    or 
+
+    sh start.sh
+
 # Example Shot Chart
 
-This is Jimmy Butler's shot chart as of December 14, 2016.
+This is Jimmy Butler's shot chart for the 2016-2017 season.
 ![Shot Chart](https://github.com/jbkuczma/NBAshotchart/blob/master/static/jimmybutler.png?raw=true)
     
