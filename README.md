@@ -23,5 +23,5 @@ Either visit the website here (coming soon) or clone this repo.
 # Example Shot Chart
 
 This is Jimmy Butler's shot chart for the 2016-2017 season.
-![Shot Chart](https://github.com/jbkuczma/NBAshotchart/blob/master/static/jimmybutler.png?raw=true)
+![Shot Chart](https://github.com/jbkuczma/NBAshotchart/blob/master/static/temp.png?raw=true)
     
